@@ -10,12 +10,19 @@ const divide = (arr, n) => {
       currentChunk.push(arr[i]);
       currentSum += arr[i];
     } else {
-      // Push current chunk and start a new one
       result.push(currentChunk);
       currentChunk = [arr[i]];
       currentSum = arr[i];
     }
+  }
+
+  // Push the last chunk if it exists
+  if (currentChunk.length > 0) {
+    result.push(currentChunk);
+  }
+
+  return result;
 };
 
-const n = prompt("Enter n: ");
+const n = parseInt(prompt("Enter n: "), 10);
 alert(JSON.stringify(divide(arr, n)));
